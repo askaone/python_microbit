@@ -231,3 +231,17 @@ sleep(1000)
 on_edge("left")
 sleep(1000)
 """
+
+# Around the World
+"""
+from microbit import *
+
+
+def around_the_world(direction, start_position):
+    x = start_position[0]
+    y = start_position[1]
+    
+    if direction == "right":
+        display.clear()
+        display.set_pixel(x, y, 9)
+"""
