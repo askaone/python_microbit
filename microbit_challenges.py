@@ -236,12 +236,61 @@ sleep(1000)
 """
 from microbit import *
 
+RIGHT = "right"
+LEFT = "left"
+UP = "up"
+DOWN = "down"
+
+
+def clear_turn_on_led(x, y):
+    display.clear()
+    display.set_pixel(x, y, 9)
+    sleep(500)
+
+
+def clear_turn_on_horizontal(direction, x, y):
+    r = None
+
+    if direction == RIGHT:
+        r = range(x, 5)
+    elif direction == LEFT:
+        r = range(x, -1, -1)
+
+    for n in r:
+        clear_turn_on_led(n, y)
+
+
+def clear_turn_on_vertical(direction, x, y):
+    r = None
+
+    if direction == DOWN:
+        r = range(y, 5)
+    elif direction == UP:
+        r = range(y, -1, -1)
+
+    for n in r:
+        clear_turn_on_led(x, n)
+
 
 def around_the_world(direction, start_position):
     x = start_position[0]
     y = start_position[1]
-    
-    if direction == "right":
-        display.clear()
-        display.set_pixel(x, y, 9)
+
+    if direction == RIGHT:
+        if x < 5 and y == 0: # Top
+            clear_turn_on_horizontal(RIGHT, x, y)
+            x = 4
+
+        display.scroll(str(x) + " - " + str(y))
+
+        if x == 4 and y < 5: # Right
+            clear_turn_on_vertical(DOWN, x, y)
+            y = 4
+
+        if x >= 0 and y == 4: # Bottom
+            clear_turn_on_horizontal(LEFT, x, y)
+            x = 0
+
+
+around_the_world(RIGHT, (0, 0))
 """
