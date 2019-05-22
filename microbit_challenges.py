@@ -283,34 +283,39 @@ def around_the_world(direction, start_position):
     coordinates = None
     if direction == RIGHT:
         coordinates = {UP:(0, 4), RIGHT:(0, 0), DOWN:(4, 0), LEFT:(4, 4)}
-        if x == 0 and 0 <= y <= 4:
+        if x == 0 and 0 < y <= 4:
             directions = [UP, RIGHT, DOWN, LEFT]
-        elif x == 4 and 0 <= y <= 4:
+        elif x == 4 and 0 <= y < 4:
             directions = [DOWN, LEFT, UP, RIGHT]
-        elif y == 0 and 0 <= x <= 4:
+        elif y == 0 and 0 <= x < 4:
             directions = [RIGHT, DOWN, LEFT, UP]
-        elif y == 4 and 0 <= x <= 4:
+        elif y == 4 and 0 < x <= 4:
             directions = [LEFT, UP, RIGHT, DOWN]
     else:
         coordinates = {UP:(4, 4), RIGHT:(0, 4), DOWN:(0, 0), LEFT:(4, 0)}
         if x == 0 and 0 <= y <= 4:
             directions = [DOWN, RIGHT, UP, LEFT]
-        elif x == 4 and 0 <= y <= 4:
+        elif x == 4 and 0 < y <= 4:
             directions = [UP, LEFT, DOWN, RIGHT]
-        elif y == 0 and 0 <= x <= 4:
+        elif y == 0 and 0 < x <= 4:
             directions = [LEFT, DOWN, RIGHT, UP]
-        elif y == 4 and 0 <= x <= 4:
+        elif y == 4 and 0 < x <= 4:
             directions = [RIGHT, UP, LEFT, DOWN]
 
     counter = 0
     while True:
         for sDirection in directions:
             coor = coordinates[sDirection]
+
+            if counter == 0:
+                coor = (x, y)
+                counter += 1
+
             if sDirection == RIGHT or sDirection == LEFT:
                 clear_turn_on_horizontal(sDirection, coor[0], coor[1])
             elif sDirection == UP or sDirection == DOWN:
                 clear_turn_on_vertical(sDirection, coor[0], coor[1])
 
 
-around_the_world(LEFT, (0, 0))
+around_the_world(LEFT, (4, 2))
 """
