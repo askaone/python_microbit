@@ -245,7 +245,10 @@ DOWN = "down"
 def clear_turn_on_led(x, y):
     display.clear()
     display.set_pixel(x, y, 9)
-    sleep(500)
+    if (1 <= x <= 3 and (y == 0 or y == 4)) or (1 <= y <= 3 and (x == 0 or x == 4)):
+        sleep(500)
+    else:
+        sleep(250)
 
 
 def clear_turn_on_horizontal(direction, x, y):
@@ -276,21 +279,39 @@ def around_the_world(direction, start_position):
     x = start_position[0]
     y = start_position[1]
 
-    if direction == RIGHT:
+    while True:
         if x < 5 and y == 0: # Top
-            clear_turn_on_horizontal(RIGHT, x, y)
-            x = 4
-
-        display.scroll(str(x) + " - " + str(y))
+            if direction == RIGHT:
+                clear_turn_on_horizontal(RIGHT, x, y)
+                x = 4
+            elif direction == LEFT:
+                clear_turn_on_horizontal(LEFT, x, y)
+                x = 0
 
         if x == 4 and y < 5: # Right
-            clear_turn_on_vertical(DOWN, x, y)
-            y = 4
+            if direction == RIGHT:
+                clear_turn_on_vertical(DOWN, x, y)
+                y = 4
+            if direction == LEFT:
+                clear_turn_on_vertical(UP, x, y)
+                y = 0
 
         if x >= 0 and y == 4: # Bottom
-            clear_turn_on_horizontal(LEFT, x, y)
-            x = 0
+            if direction == RIGHT:
+                clear_turn_on_horizontal(LEFT, x, y)
+                x = 0
+            if direction == LEFT:
+                clear_turn_on_horizontal(RIGHT, x, y)
+                x = 4
+
+        if x == 0 and y >= 0: # Left
+            if direction == RIGHT:
+                clear_turn_on_vertical(UP, x, y)
+                y = 0
+            if direction == LEFT:
+                clear_turn_on_vertical(DOWN, x, y)
+                y = 0
 
 
-around_the_world(RIGHT, (0, 0))
+around_the_world(LEFT, (3, 0))
 """
