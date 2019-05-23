@@ -30,5 +30,6 @@ def flicker(x, y, times):
     # Clear the screen at the END
     display.clear()
 
+
 # Call our function
 flicker(3, 4, 5)

@@ -149,8 +149,8 @@ import random
 
 
 def rand_plotting(times):
-    x = random.randint(1, 4)
-    y = random.randint(1, 4)
+    x = random.randint(0, 4)
+    y = random.randint(0, 4)
     for n in range(1, times + 1):
         display.clear()
         sleep(1000)
