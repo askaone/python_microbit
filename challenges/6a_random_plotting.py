@@ -1,6 +1,6 @@
 # Random Plotting
 """
-Random Plotting A
+Random Plotting - A
 
 Write a function that will turn a random pixel (LED) on and off.Start by
 clearing out the LED display (turn off all the pixels (LEDs))

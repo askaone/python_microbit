@@ -1,5 +1,5 @@
 """
-Random Plotting B
+Random Plotting - B
 
 Write a function that will turn a random pixel (LED) on and off a certain number
 of times. Start by clearing out the LED display (turn off all the pixels (LEDs))
