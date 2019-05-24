@@ -4,7 +4,7 @@ This is a collection of challenges for solve in python with the Micro:bit device
 
 ## Hello World
 
-In this chapter you will learn how to program the Micro:bit with Python. Here we will show you the basics tool from the API that you will need for be able to solve the problems for this challenge.
+In this chapter you will learn the basics instruction to program the Micro:bit with Python. We will show you the functions from the API that you will need for be able to solve this challenges.
 
 ### First Step... Say Hello
 
@@ -20,9 +20,24 @@ Now, you can call the **scroll** function to show in the screen the message *Hel
 display.scroll('Hello, World!')
 ```
 
-> The next link is a test for link the resources.
+Also, you can draw an Image by your own or a pre-made.
 
-You will found an example for this [here] (1_hello_world.py)
+```python
+# Draw in the screen a "heart" image
+display.show(Image.HEART)
+```
+
+And, if you want *wait* between instruction you have the **sleep** function, this receive as a parameter how long has to wait in milliseconds.
+
+```python
+sleep(1000)
+```
+
+> You will found an example [here](1_hello_world.py)
+
+### Pressing Button
+
+Maybe you will want also press the buttons on the device.
 
 ## Plot / Unplot Pixels
 
