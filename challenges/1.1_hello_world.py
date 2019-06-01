@@ -16,5 +16,5 @@ while True:
     # Draw in the screen a "heart" image
     display.show(Image.HEART)
 
-    # Wait for two seconds (2000 miliseconds)
+    # Wait for two seconds (2000 milliseconds)
     sleep(2000)
